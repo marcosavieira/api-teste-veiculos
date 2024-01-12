@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('revisoes', function (Blueprint $table) {
+        Schema::create('revisao_veiculars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('veiculo_id');
-            $table->foreign('veiculo_id')->references('id')->on('veiculos');
-            $table->date('data_revisao');
-            $table->text('descricao')->nullable();
+            $table->string('marca');
+            $table->string('placa');
+            $table->date('data_manutencao');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('revisoes');
+        Schema::dropIfExists('revisao_veicular');
     }
 };

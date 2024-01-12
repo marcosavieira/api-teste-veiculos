@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\VeiculoController; 
+use App\Http\Controllers\RevisaoVeicularController; 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -22,3 +23,11 @@ Route::post('/veiculos', [VeiculoController::class, 'createVeiculo']);
 Route::get('/veiculos/{veiculo}', [VeiculoController::class, 'getVeiculo']);
 Route::put('/veiculos/{veiculo}', [VeiculoController::class, 'updateVeiculo']);
 Route::delete('/veiculos/{veiculo}', [VeiculoController::class, 'deleteVeiculo']);
+
+// Rotas para Revisao
+Route::get('/veiculos/revisoes', [RevisaoVeicularController::class, 'getRevisoesVeiculares']);
+Route::post('/veiculos/revisoes', [RevisaoVeicularController::class, 'createRevisaoVeicular']);
+Route::get('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'getRevisaoVeicular']);
+Route::put('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'updateRevisaoVeicular']);
+Route::delete('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'deleteRevisaoVeicular']);
+
