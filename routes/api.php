@@ -2,15 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PessoasController;
+use App\Http\Controllers\PessoaController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/pessoas', [PessoasController::class, 'index']);
-Route::post('/pessoas', [PessoasController::class, 'store']);
-// Route::post('/pessoas', 'PessoasController@store');
-Route::get('/pessoas/{pessoa}', [PessoasController::class, 'show']);
-Route::put('/pessoas/{pessoa}', [PessoasController::class, 'update']);
-Route::delete('/pessoas/{pessoa}', [PessoasController::class, 'destroy']);
+Route::get('/pessoas', [PessoaController::class, 'getPessoas']);
+Route::post('/pessoas', [PessoaController::class, 'createPessoa']);
+Route::get('/pessoas/{pessoa}', [PessoaController::class, 'getPessoa']);
+Route::put('/pessoas/{pessoa}', [PessoaController::class, 'updatePessoa']);
+Route::delete('/pessoas/{pessoa}', [PessoaController::class, 'deletePessoa']);
