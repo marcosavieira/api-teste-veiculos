@@ -27,8 +27,6 @@ class VeiculoController extends Controller
 
         $veiculo = Veiculo::create($validateData);
 
-        $veiculo->veiculo_id = $veiculo->id;
-
         return response()->json($veiculo, 201);
     }
 
