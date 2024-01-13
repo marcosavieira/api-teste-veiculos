@@ -35,4 +35,9 @@ Route::delete('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class,
 //Rotas de relatorios
 Route::get('/relatorios/todas_pessoas', [RelatoriosController::class, 'relatorioTodasPessoas']);
 Route::get('/relatorios/media_idade_genero', [RelatoriosController::class, 'relatorioMediaIdadePorGenero']);
+Route::get('/relatorios/todos_veiculos', [RelatoriosController::class, 'relatorioTodosVeiculos']);
+Route::get('/relatorios/veiculos_por_pessoa', [RelatoriosController::class, 'relatorioVeiculosPorPessoa']);
+Route::get('/relatorios/contagem_por_genero', [RelatoriosController::class, 'relatorioContagemPorGenero']);
+Route::get('/relatorios/marcas_veiculos', [RelatoriosController::class, 'relatorioMarcasVeiculos']);
+
 
