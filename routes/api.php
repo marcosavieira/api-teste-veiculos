@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\VeiculoController; 
-use App\Http\Controllers\RevisaoVeicularController; 
+use App\Http\Controllers\RevisaoVeicularController;
+use App\Http\Controllers\RelatoriosController; 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -30,4 +31,8 @@ Route::post('/veiculos/revisoes', [RevisaoVeicularController::class, 'createRevi
 Route::get('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'getRevisaoVeicular']);
 Route::put('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'updateRevisaoVeicular']);
 Route::delete('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'deleteRevisaoVeicular']);
+
+//Rotas de relatorios
+Route::get('/relatorios/todas_pessoas', [RelatoriosController::class, 'relatorioTodasPessoas']);
+Route::get('/relatorios/media_idade_genero', [RelatoriosController::class, 'relatorioMediaIdadePorGenero']);
 

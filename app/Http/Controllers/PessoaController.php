@@ -21,6 +21,7 @@ class PessoaController extends Controller
             'nome' => 'required|string',
             'idade' => 'required|integer',
             'genero' => 'required|string',
+            'quantidade_veiculos' => 'required|integer',
         ]);
 
         $pessoa = Pessoa::create($validateData);
@@ -41,6 +42,7 @@ class PessoaController extends Controller
             'nome' => 'required|string',
             'idade' => 'required|integer',
             'genero' => 'required|string',
+            'quantidade_veiculos' => 'required|integer',
         ]);
 
         $pessoa->update($validateData);
