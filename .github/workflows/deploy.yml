@@ -1,0 +1,45 @@
+name: Laravel App CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t devmarcosav/laravelapp:latest .
+        docker push devmarcosav/laravelapp:latest
+
+    - name: Run Database Migrations
+      run: |
+        docker-compose run --rm laravelapp php artisan migrate --force
+
+    - name: Deploy to Docker Compose
+      run: |
+        docker-compose down -v
+        docker-compose up -d --build laravelapp
+
+    - name: Test Application
+      run: |
+        # Adicione comandos de teste, se aplicável
+
+    - name: Cleanup
+      run: docker-compose down -v
