@@ -32,12 +32,20 @@ Route::get('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'g
 Route::put('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'updateRevisaoVeicular']);
 Route::delete('/veiculos/revisoes/{revisao}', [RevisaoVeicularController::class, 'deleteRevisaoVeicular']);
 
-//Rotas de relatorios
+//Rotas de relatorios Pessoas
 Route::get('/relatorios/todas_pessoas', [RelatoriosController::class, 'relatorioTodasPessoas']);
 Route::get('/relatorios/media_idade_genero', [RelatoriosController::class, 'relatorioMediaIdadePorGenero']);
+
+//Rotas de relatorios Veiculos
 Route::get('/relatorios/todos_veiculos', [RelatoriosController::class, 'relatorioTodosVeiculos']);
 Route::get('/relatorios/veiculos_por_pessoa', [RelatoriosController::class, 'relatorioVeiculosPorPessoa']);
 Route::get('/relatorios/contagem_por_genero', [RelatoriosController::class, 'relatorioContagemPorGenero']);
 Route::get('/relatorios/marcas_veiculos', [RelatoriosController::class, 'relatorioMarcasVeiculos']);
+
+//Rotas de relatorios Revisoes
+Route::get('/relatorios/todas-revisoes', [RelatoriosController::class, 'relatorioTodasRevisoes']);
+Route::get('/relatorios/marcas-maior-numero-revisoes', [RelatoriosController::class, 'relatorioMarcasMaiorNumeroRevisoes']);
+Route::get('/relatorios/pessoas-maior-numero-revisoes', [RelatoriosController::class, 'relatorioPessoasMaiorNumeroRevisoes']);
+Route::get('/relatorios/media-tempo-entre-revisoes/{pessoa_id}', [RelatoriosController::class, 'relatorioMediaTempoEntreRevisoes']);
 
 

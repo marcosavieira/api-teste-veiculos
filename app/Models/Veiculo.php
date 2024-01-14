@@ -18,6 +18,6 @@ class Veiculo extends Model
 
     public function revisoes()
     {
-        return $this->hasMany(Revisao::class);
+        return $this->hasMany(RevisaoVeicular::class);
     }
 }

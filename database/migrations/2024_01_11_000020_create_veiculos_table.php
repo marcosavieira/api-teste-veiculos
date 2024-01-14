@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('marca');
             $table->string('tipo');
             $table->string('modelo')->nullable();
-            $table->string('placa')->nullable();
+            $table->string('placa')->unique();
             $table->timestamps();
         });
     }
