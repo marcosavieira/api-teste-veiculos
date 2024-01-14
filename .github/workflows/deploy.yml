@@ -11,13 +11,13 @@ jobs:
 
     services:
       db:
-        image: postgres:12
+        image: postgres:15
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
+          POSTGRES_USER: db_veiculos_user
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: db_veiculos
 
     steps:
     - name: Checkout Repository
