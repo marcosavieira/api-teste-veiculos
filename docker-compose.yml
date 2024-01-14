@@ -3,7 +3,7 @@ version: "3.9"
 services:
  laravelapp:
     container_name: laravelapp
-    image: devmarcosav/laravelapp:2.2.2
+    image: devmarcosav/laravelapp:2.2.3
     build: .
     ports:
       - "8000:8000"

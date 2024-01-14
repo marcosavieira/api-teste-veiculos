@@ -9,5 +9,17 @@ class RevisaoVeicular extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['marca', 'placa', 'data_manutencao'];
+    protected $fillable = ['marca', 'veiculo_id', 'data_manutencao', 'pessoa_id'];
+
+    // Relacionamento com Veiculo
+    public function veiculo()
+    {
+        return $this->belongsTo(Veiculo::class);
+    }
+
+    // Relacionamento com Pessoa
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class);
+    }
 }
