@@ -7,9 +7,30 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @OA\Tag(
+ *     name="Veiculos",
+ *     description="Operações relacionadas a veículos",
+ * )
+ */
 class VeiculoController extends Controller
 {
-    // Lista todos os veículos em JSON
+    /**
+     * @OA\Get(
+     *     path="/veiculos",
+     *     summary="Lista todos os veículos",
+     *     tags={"Veiculos"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Lista de todos os veículos",
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Veiculo"))
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro ao obter a lista de veículos",
+     *     ),
+     * )
+     */
     public function getVeiculos()
     {
         try {
@@ -20,7 +41,30 @@ class VeiculoController extends Controller
         }
     }
 
-    // Cria um novo veículo na tabela
+    /**
+     * @OA\Post(
+     *     path="/veiculos",
+     *     summary="Cria um novo veículo",
+     *     tags={"Veiculos"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Veiculo"),
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Veículo criado com sucesso",
+     *         @OA\JsonContent(ref="#/components/schemas/Veiculo")
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Erro de validação",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro ao criar um novo veículo",
+     *     ),
+     * )
+     */
     public function createVeiculo(Request $request)
     {
         try {
@@ -42,7 +86,33 @@ class VeiculoController extends Controller
         }
     }
 
-    // Lista um veículo específico
+    /**
+     * @OA\Get(
+     *     path="/veiculos/{id}",
+     *     summary="Lista um veículo específico",
+     *     tags={"Veiculos"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         description="ID do veículo",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Veículo encontrado",
+     *         @OA\JsonContent(ref="#/components/schemas/Veiculo")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Veículo não encontrado",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro ao obter o veículo",
+     *     ),
+     * )
+     */
     public function getVeiculo($id)
     {
         try {
@@ -55,7 +125,37 @@ class VeiculoController extends Controller
         }
     }
 
-    // Atualiza um veículo
+    /**
+     * @OA\Put(
+     *     path="/veiculos/{veiculo}",
+     *     summary="Atualiza um veículo",
+     *     tags={"Veiculos"},
+     *     @OA\Parameter(
+     *         name="veiculo",
+     *         in="path",
+     *         required=true,
+     *         description="Veículo a ser atualizado",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Veiculo"),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Veículo atualizado com sucesso",
+     *         @OA\JsonContent(ref="#/components/schemas/Veiculo")
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Erro de validação",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro ao atualizar o veículo",
+     *     ),
+     * )
+     */
     public function updateVeiculo(Request $request, Veiculo $veiculo)
     {
         try {
@@ -77,7 +177,28 @@ class VeiculoController extends Controller
         }
     }
 
-    // Deleta um veículo
+    /**
+     * @OA\Delete(
+     *     path="/veiculos/{veiculo}",
+     *     summary="Deleta um veículo",
+     *     tags={"Veiculos"},
+     *     @OA\Parameter(
+     *         name="veiculo",
+     *         in="path",
+     *         required=true,
+     *         description="Veículo a ser deletado",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Veículo deletado com sucesso",
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro ao deletar o veículo",
+     *     ),
+     * )
+     */
     public function deleteVeiculo(Veiculo $veiculo)
     {
         try {
