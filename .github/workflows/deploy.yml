@@ -25,8 +25,12 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
+        echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u $DOCKER_USERNAME --password-stdin
         docker build -t devmarcosav/laravelapp:latest .
         docker push devmarcosav/laravelapp:latest
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    
 
     - name: Run Database Migrations
       run: |
