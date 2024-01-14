@@ -36,9 +36,10 @@ jobs:
 
     - name: Run Database Migrations
       run: |
-        echo "DATABASE_URL=pgsql://db_veiculos_user:${{ secrets.POSTGRES_PASSWORD }}@db:5432/db_veiculos" > .env
-        docker-compose run --rm laravelapp composer install
         docker-compose run --rm laravelapp php artisan migrate --force
+      env:
+        DATABASE_URL: postgres://db_veiculos_user:${{ secrets.POSTGRES_PASSWORD }}@dpg-cmhlbn7109ks739fops0-a/db_veiculos
+      
       
       
 
