@@ -37,7 +37,7 @@ jobs:
     - name: Run Database Migrations
       run: |
         echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
-        docker run --rm -v $(pwd):/app -w /app devmarcosav/laravelapp:latest composer install
+        docker run --rm -v $(pwd):/app -w /app composer install --ignore-platform-reqs --no-scripts
         docker run --rm -v $(pwd):/app -w /app devmarcosav/laravelapp:latest php artisan migrate --force
       
 
