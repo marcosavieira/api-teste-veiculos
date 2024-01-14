@@ -36,6 +36,7 @@ jobs:
 
     - name: Run Database Migrations
       run: |
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
         docker-compose run --rm laravelapp php artisan migrate --force
 
     - name: Deploy to Docker Compose
