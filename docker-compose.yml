@@ -13,13 +13,13 @@ services:
       - db
  db:
     container_name: db
-    image: postgres:12
+    image: postgres:15
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+       POSTGRES_USER: db_veiculos_user
+       POSTGRES_PASSWORD: ${DB_PASSWORD}
+       POSTGRES_DB: db_veiculos
     volumes:
      - pgdata:/var/lib/postgresql/data
 
