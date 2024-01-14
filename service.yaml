@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2024-01-14T16:37:06Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  name: api-veiculos-service
+  namespace: default
+  resourceVersion: "301381"
+  uid: d7cc09a0-17ef-4f42-8abd-017f64a6ea9d
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.24.13.177
+  clusterIPs:
+  - 10.24.13.177
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 32127
+    port: 8080
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: api-veiculos-deployment
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.199.126.143

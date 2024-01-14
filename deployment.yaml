@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meu-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-veiculos-deployment
+  template:
+    metadata:
+      labels:
+        app: api-veiculos-deployment
+    spec:
+      containers:
+        - name: meu-container
+          image: gcr.io/api-veiculos-411205/app@sha256:79bdc15e2340bba91c1131c0ea45679654add033bd188bcefe82f7d2481a53fb
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meu-servico
+spec:
+  selector:
+    app: api-veiculos-deployment
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8000
+  type: LoadBalancer
