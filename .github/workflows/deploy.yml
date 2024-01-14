@@ -25,14 +25,14 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        echo "//docker.io/v1/" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin docker.io
         docker build -t devmarcosav/laravelapp:latest .
         docker push devmarcosav/laravelapp:latest
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
     
-    
+    - name: Debug Environment Variables
+      run: |
+        echo "DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}"
+        echo "DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}"    
 
     - name: Run Database Migrations
       run: |
